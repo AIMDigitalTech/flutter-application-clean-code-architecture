@@ -6,10 +6,10 @@ Bloc is utilized for effective state management, ensuring a clear separation of 
 
 ## Key Features
 
-Clean architecture for enhanced organization and maintainability
-Bloc for streamlined state management
-Modular structure for feature-based development
-Emphasis on testability for improved code quality
+- Clean architecture for enhanced organization and maintainability
+- Bloc for streamlined state management
+- Modular structure for feature-based development
+- Emphasis on testability for improved code quality
 
 ## Overview
 
@@ -47,28 +47,28 @@ this architecture include:
 
 This project leverages a variety of essential Flutter packages to deliver a rich user experience:
 
-**flutter_bloc:** Manages application state through BLoC patterns.
-**equatable:** Simplifies value object comparisons.
-**get_it:** Offers a dependency injection solution.
-**get:** Provides navigation and theming functionalities.
-**dartz:** Enables functional programming constructs in Dart.
-**shared_preferences:** Facilitates local storage of data.
-**flutter_localizations:** Supports app localization.
-**intl:** Aids in internationalization efforts.
-**dio:** Handles efficient networking operations.
-**simple_connection_checker:** Verifies internet connectivity.
-**path:** Assists with file path handling.
-**path_provider:** Provides access to application storage directories.
-**drift:** A powerful ORM (Object-Relational Mapper) for database interactions (optional).
-**sqlite3_flutter_libs:** Allows for SQLite database usage with Flutter (optional).
-**firebase_messaging:** Enables push notifications (optional).
-**firebase_crashlytics:** Integrates crash reporting (optional).
-**firebase_analytics:** Provides app usage analytics (optional).
-**firebase_core:** Core Firebase functionalities (optional).
-**flutter_local_notifications:** Local notification management (optional).
-**flutter_flavorizr:** Facilitates flavor management for different environments (optional).
-**permission_handler:** Requests and manages user permissions (optional).
-**google_fonts:** Integrates Google Fonts for a wider font selection (optional).
+- **flutter_bloc:** Manages application state through BLoC patterns.
+- **equatable:** Simplifies value object comparisons.
+- **get_it:** Offers a dependency injection solution.
+- **get:** Provides navigation and theming functionalities.
+- **dartz:** Enables functional programming constructs in Dart.
+- **shared_preferences:** Facilitates local storage of data.
+- **flutter_localizations:** Supports app localization.
+- **intl:** Aids in internationalization efforts.
+- **dio:** Handles efficient networking operations.
+- **simple_connection_checker:** Verifies internet connectivity.
+- **path:** Assists with file path handling.
+- **path_provider:** Provides access to application storage directories.
+- **drift:** A powerful ORM (Object-Relational Mapper) for database interactions (optional).
+- **sqlite3_flutter_libs:** Allows for SQLite database usage with Flutter (optional).
+- **firebase_messaging:** Enables push notifications (optional).
+- **firebase_crashlytics:** Integrates crash reporting (optional).
+- **firebase_analytics:** Provides app usage analytics (optional).
+- **firebase_core:** Core Firebase functionalities (optional).
+- **flutter_local_notifications:** Local notification management (optional).
+- **flutter_flavorizr:** Facilitates flavor management for different environments (optional).
+- **permission_handler:** Requests and manages user permissions (optional).
+- **google_fonts:** Integrates Google Fonts for a wider font selection (optional).
 
 ## Getting Started
 
