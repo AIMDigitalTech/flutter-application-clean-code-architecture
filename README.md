@@ -95,6 +95,14 @@ improve this project.
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
-## AIM Digital Technologies
+## Custom Flutter App Development
+
+Looking for a custom Flutter mobile or web application? 
+**AIM Digital Technologies** can help! Visit our website or contact us via email for a consultation.
+
+### Contact Information
+
+- **Website**: https://aimdigital.tech/services/flutter-app-development
+- **Email**: reachus@aimdigital.tech
 
 
