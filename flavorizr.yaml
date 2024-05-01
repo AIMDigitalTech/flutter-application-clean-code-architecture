@@ -1,0 +1,21 @@
+flavors:
+  dev:
+    app:
+      name: "AIM Digital Dev"
+
+    android:
+      applicationId: "tech.aimdigital.architecture.dev"
+    ios:
+      bundleId: "tech.aimdigital.architecture.dev"
+    macos:
+      bundleId: "tech.aimdigital.architecture.dev"
+  prod:
+    app:
+      name: "AIM Digital Prod"
+
+    android:
+      applicationId: "tech.aimdigital.architecture"
+    ios:
+      bundleId: "tech.aimdigital.architecture"
+    macos:
+      bundleId: "tech.aimdigital.architecture"
