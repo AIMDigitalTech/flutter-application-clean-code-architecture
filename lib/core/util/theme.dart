@@ -27,6 +27,10 @@ const double kSpaceM = 12.0;
 const double kSpaceL = 16.0;
 
 const double kRadiusM = 16.0;
+const double kRadiusS = 8.0;
+
+const double buttonDefaultHeight = 50.0;
+const double fontSizeDefault = 16.0;
 
 // Spacing
 const double kIconS = 24.0;
@@ -38,6 +42,8 @@ const Duration kButtonAnimationDuration = Duration(milliseconds: 600);
 const Duration kCardAnimationDuration = Duration(milliseconds: 400);
 const Duration kRippleAnimationDuration = Duration(milliseconds: 400);
 const Duration kLoginAnimationDuration = Duration(milliseconds: 1500);
+
+const familyFont = 'PolySans';
 
 // Text Styling
 
@@ -158,8 +164,6 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     secondaryHeaderColor: secondaryColor,
     canvasColor: Colors.transparent,
     brightness: Brightness.dark,
-    errorColor: errorColor,
-    backgroundColor: backgroundColor,
     textTheme: const TextTheme(),
     inputDecorationTheme: const InputDecorationTheme(),
     appBarTheme: const AppBarTheme(
@@ -168,5 +172,6 @@ ThemeData lightTheme = ThemeData.light().copyWith(
     colorScheme: ColorScheme.fromSwatch().copyWith(secondary: secondaryColor));
 
 // Dark Theme.
-ThemeData darkTheme = ThemeData.dark()
-    .copyWith(brightness: Brightness.dark, backgroundColor: Colors.blue[700]);
+ThemeData darkTheme = ThemeData.dark().copyWith(
+  brightness: Brightness.dark,
+);

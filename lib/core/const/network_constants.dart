@@ -5,6 +5,7 @@ const int kTimeOut = 25;
 ///
 /// API ENDPOINTS
 ///
-const String kloginAPI = "";
+const String kloginAPI = "/connect/token";
 const String klogoutAPI = "";
 const String kproductsAPI = "";
+

@@ -45,7 +45,7 @@ class NetworkClient {
           break;
       }
       return response;
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       throw ServerException(dioError: dioError);
     } on SocketException {
       rethrow;

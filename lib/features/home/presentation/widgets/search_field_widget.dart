@@ -1,9 +1,5 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
-import '../../../../core/const/route_constants.dart';
-import '../../../../core/routing/routes.dart';
 import '../../../../core/util/theme.dart';
 
 class SearchFieldWidget extends StatelessWidget {
@@ -18,7 +14,6 @@ class SearchFieldWidget extends StatelessWidget {
       ),
       onTap: () {
         log("Search Icon tap.");
-        RouteNavigator.pushNamed(routeName: RoutesList.searchRoute);
       },
     );
   }

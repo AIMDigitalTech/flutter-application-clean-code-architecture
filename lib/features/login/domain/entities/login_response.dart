@@ -5,7 +5,7 @@ class LoginResponseDto extends Equatable {
   final String iBan;
   final String activationDate;
 
-  LoginResponseDto(
+  const LoginResponseDto(
       {required this.name, required this.iBan, required this.activationDate});
 
   @override

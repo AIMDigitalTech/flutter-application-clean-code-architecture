@@ -11,9 +11,9 @@ class F {
   static String get baseURL {
     switch (appFlavor) {
       case Flavor.dev:
-        return 'https://ae-api-dev.developine.com';
+        return 'https://api-dev.com';
       case Flavor.prod:
-        return 'https://ae-api.developine.com';
+        return 'https://api-prod.com';
       default:
         return '';
     }
@@ -22,9 +22,9 @@ class F {
   static String get title {
     switch (appFlavor) {
       case Flavor.dev:
-        return 'developine dev';
+        return 'AIM Digital dev';
       case Flavor.prod:
-        return 'developine ';
+        return 'AIM Digital ';
       default:
         return 'title';
     }

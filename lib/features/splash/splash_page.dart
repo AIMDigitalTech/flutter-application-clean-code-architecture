@@ -1,14 +1,12 @@
 import 'dart:async';
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:go_router/go_router.dart';
 import '../../core/bloc/network_cubit.dart';
 import '../../core/bloc/network_state.dart';
 import '../../core/const/route_constants.dart';
 import '../../core/layout/colored_safearea.dart';
-import '../../core/routing/routes.dart';
 import '../../core/util/theme.dart';
 
 class SplashPage extends StatefulWidget {
@@ -25,9 +23,9 @@ class SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Timer(
-        const Duration(seconds: 5),
-        () => RouteNavigator.pushRepalcementNamed(
-            routeName: RoutesList.homeRoute));
+      const Duration(seconds: 3),
+      () => context.go(RoutesList.loginRoute),
+    );
   }
 
   @override
@@ -48,12 +46,6 @@ class SplashPageState extends State<SplashPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Expanded(
-                child: Icon(
-                  Icons.download_for_offline_outlined,
-                  size: kIconL,
-                ),
-              ),
               const Align(
                 alignment: Alignment.center,
                 child: CircularProgressIndicator(),

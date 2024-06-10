@@ -1,12 +1,10 @@
-import 'dart:io';
-
+import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_connection_checker/simple_connection_checker.dart';
-
-import '../../config/env_config.dart';
+import '../../config/flavors.dart';
 import '../../features/login/data/data_sources/login_local_datasource.dart';
 import '../../features/login/data/data_sources/login_remote_datasource.dart';
 import '../../features/login/data/repositories/login_repository_impl.dart';
@@ -20,6 +18,22 @@ import '../network/pretty_dio_logger.dart';
 
 final serviceLocator = GetIt.I;
 
+// Must be top-level function
+_parseAndDecode(String response) {
+  return jsonDecode(response);
+}
+
+parseJson(String text) {
+  return compute(_parseAndDecode, text);
+}
+
+final authHeader = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Accept': 'application/json',
+  // 'responseType': 'ResponseType.json',
+  // 'followRedirects': true,
+};
+
 Future<void> initDI() async {
   // TODO: SEPARATE REMOTE, CACHE, DOMAIN, DATA DEPENDENCIES
 
@@ -27,17 +41,14 @@ Future<void> initDI() async {
   BaseOptions baseOptions = BaseOptions(
       receiveTimeout: const Duration(milliseconds: 5000),
       connectTimeout: const Duration(milliseconds: 5000),
-      headers: {"Content-Type": "application/json"},
-      baseUrl: GlobalAppConfig.getInstance()?.apiBaseURL ?? "",
+      baseUrl: F.baseURL,
+      contentType: 'application/x-www-form-urlencoded',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
       maxRedirects: 2);
-  _dio.options = baseOptions;
 
-  (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-      (client) {
-    client.badCertificateCallback =
-        (X509Certificate cert, String host, int port) => true;
-    return client;
-  };
+  _dio.options = baseOptions;
 
   _dio.interceptors.clear();
 
@@ -51,6 +62,8 @@ Future<void> initDI() async {
       responseBody: true,
       responseHeader: false));
 
+  (_dio.transformer as BackgroundTransformer).jsonDecodeCallback = parseJson;
+
   _dio.interceptors
       .add(InterceptorsWrapper(onError: (DioException error, handler) {
     return handler.next(error);
@@ -61,6 +74,8 @@ Future<void> initDI() async {
   }));
 
   serviceLocator.registerLazySingleton(() => _dio);
+
+  serviceLocator.registerFactory(() => NetworkCubit());
 
   // Firebase logger
   serviceLocator.registerLazySingleton(() => FirebaseLogger());
@@ -74,14 +89,16 @@ Future<void> initDI() async {
 
   // Local Cache/ Shared Preferences
   final sharedPreferences = await SharedPreferences.getInstance();
-  final connectionChecker = SimpleConnectionChecker()
-    ..setLookUpAddress('pub.dev');
+  if (!kIsWeb) {
+    final connectionChecker = SimpleConnectionChecker()
+      ..setLookUpAddress('pub.dev');
+
+    serviceLocator.registerLazySingleton<SimpleConnectionChecker>(
+        () => connectionChecker);
+  }
 
   serviceLocator
       .registerLazySingleton<SharedPreferences>(() => sharedPreferences);
-
-  serviceLocator
-      .registerLazySingleton<SimpleConnectionChecker>(() => connectionChecker);
 
   serviceLocator.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
 
@@ -102,8 +119,6 @@ Future<void> initDI() async {
   // // BLOC
   serviceLocator.registerFactory<LoginCubit>(
       () => LoginCubit(loginRepository: serviceLocator()));
-
-  serviceLocator.registerFactory(() => NetworkCubit());
 
   // USE CASES
 

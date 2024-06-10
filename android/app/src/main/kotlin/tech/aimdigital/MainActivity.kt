@@ -1,4 +1,4 @@
-package com.dukkantek.dtekswift
+package tech.aimdigital
 
 import io.flutter.embedding.android.FlutterActivity
 
